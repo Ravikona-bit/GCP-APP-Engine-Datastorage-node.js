@@ -1,0 +1,29 @@
+{
+  "name": "customer_profile",
+  "version": "1.0.0",
+  "description": "Simple Node app to build customer profile using GCP datastore",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "deploy": "gcould app deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "@google-cloud/datastore": "^4.0.0",
+    "body-parser": "1.19.0",
+    "lodash": "^4.17.11",
+    "nconf": "^0.10.0",
+    "prompt": "^1.0.0",
+    "pug": "^2.0.3",
+    "uglify-js": "^3.4.9"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^3.0.0",
+    "ava": "^2.1.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.0.0"
+  }
+}

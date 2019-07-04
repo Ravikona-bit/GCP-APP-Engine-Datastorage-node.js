@@ -1,0 +1,89 @@
+
+'use strict';
+
+//var credentials = require(../credential.json);
+const {Datastore} = require('@google-cloud/datastore');
+
+  /*const projectId = 'customerprofile';
+
+  // Creates a client
+  const datastore = new Datastore({
+    projectId: projectId,
+    credentials: credentials
+  });*/
+
+// [START config]
+const ds = new Datastore();
+const kind = 'Customers';
+// [END config]
+
+function fromDatastore(obj) {
+  obj.id = obj[Datastore.KEY].id;
+  return obj;
+}
+
+function toDatastore(obj, nonIndexed) {
+  nonIndexed = nonIndexed || [];
+  const results = [];
+  Object.keys(obj).forEach(k => {
+    if (obj[k] === undefined) {
+      return;
+    }
+    results.push({
+      name: k,
+      value: obj[k],
+      excludeFromIndexes: nonIndexed.indexOf(k) !== -1,
+    });
+  });
+  return results;
+}
+
+// Lists all customers in the Datastore sorted alphabetically by name.
+// The ``limit`` argument determines the maximum amount of results to
+// return per page. The ``token`` argument allows requesting additional
+// pages. The callback is invoked with ``(err, customers, nextPageToken)``.
+// [START list]
+function list(limit, token, cb) {
+  const q = ds
+    .createQuery([kind])
+    .limit(limit)
+    .order('name')
+    .start(token);
+
+  ds.runQuery(q, (err, entities, nextQuery) => {
+    if (err) {
+      cb(err);
+      return;
+    }
+    const hasMore =
+      nextQuery.moreResults !== Datastore.NO_MORE_RESULTS
+        ? nextQuery.endCursor
+        : false;
+    cb(null, entities.map(fromDatastore), hasMore);
+  });
+}
+// [END list]
+
+function read(id, cb) {
+  const key = ds.key([kind, parseInt(id, 10)]);
+  ds.get(key, (err, entity) => {
+    if (!err && !entity) {
+      err = {
+        code: 404,
+        message: 'Not found',
+      };
+    }
+    if (err) {
+      cb(err);
+      return;
+    }
+    cb(null, fromDatastore(entity));
+  });
+}
+
+// [START exports]
+module.exports = {
+  read,
+  list,
+};
+// [END exports]

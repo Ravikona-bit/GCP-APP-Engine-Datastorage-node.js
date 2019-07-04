@@ -1,7 +1,7 @@
 # GCP-APPEngine-Datastorage-node.js
 API in GCP using App Engine (standard) and Node with a connection to a (NoSQL) Cloud Datastore database
 
-Prerequsites :- Fair knowledge on Google cloud account, GCP SDK and node.js
+Prerequsites :- Google cloud account with Fair knowledge on same, GCP SDK and node.js
 
 
 1. Run "npm install" to generate nodes_modules folder with required dependencies in your machine

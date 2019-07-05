@@ -11,3 +11,13 @@ Prerequsites :- Google cloud account with Fair knowledge on same, GCP SDK and no
 5. Run gcloud app browse to verify the application
 6. To verify from UI - /customers to retrieve list of customers and /customers/ to retrieve specific customer details. Soon will update code with add, edit/update and delete features.
 7. To verify from Postman or soap ui for JSON resonse use api's /api/customers and /api/customers/
+
+Screen shots:
+
+GCP datastorage :
+
+![GCP_Datastorage](https://user-images.githubusercontent.com/52506594/60697335-5c155480-9f07-11e9-88c4-98c5eb4d19fc.PNG)
+
+Node data model with datasorage isntance for Kind (we refer as Tables in SQL or other relational Databases):
+
+![Node_datamodel_storage](https://user-images.githubusercontent.com/52506594/60697387-a8609480-9f07-11e9-8d84-da1ea253d83d.PNG)

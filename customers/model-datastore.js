@@ -1,16 +1,7 @@
 
 'use strict';
 
-//var credentials = require(../credential.json);
 const {Datastore} = require('@google-cloud/datastore');
-
-  /*const projectId = 'customerprofile';
-
-  // Creates a client
-  const datastore = new Datastore({
-    projectId: projectId,
-    credentials: credentials
-  });*/
 
 // [START config]
 const ds = new Datastore();
@@ -22,7 +13,7 @@ function fromDatastore(obj) {
   return obj;
 }
 
-function toDatastore(obj, nonIndexed) {
+/*function toDatastore(obj, nonIndexed) {
   nonIndexed = nonIndexed || [];
   const results = [];
   Object.keys(obj).forEach(k => {
@@ -36,7 +27,7 @@ function toDatastore(obj, nonIndexed) {
     });
   });
   return results;
-}
+}*/
 
 // Lists all customers in the Datastore sorted alphabetically by name.
 // The ``limit`` argument determines the maximum amount of results to
@@ -64,6 +55,7 @@ function list(limit, token, cb) {
 }
 // [END list]
 
+//Returns specific customer details for given customer ID
 function read(id, cb) {
   const key = ds.key([kind, parseInt(id, 10)]);
   ds.get(key, (err, entity) => {
@@ -84,6 +76,6 @@ function read(id, cb) {
 // [START exports]
 module.exports = {
   read,
-  list,
+  list
 };
 // [END exports]

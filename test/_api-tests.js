@@ -25,12 +25,12 @@ module.exports = () => {
     }, 1000);
   });
 
-  test.serial.cb(`should get customer for respective customer id`, t => {
+  test.serial.cb(`should get customer with 200 response for respective customer id`, t => {
     getRequest(testConfig)
       .get(`/api/customers/${id}/`)
       .expect(200)
       .expect(response => {
-        t.is(response.text, `OK`);
+        t.is(response.status,200)
       })
       .end(t.end);
   });

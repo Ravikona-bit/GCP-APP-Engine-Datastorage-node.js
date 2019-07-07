@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path');
-const config = require('./config');
 var express = require('express');
 
 var app = express()
@@ -10,14 +9,6 @@ app.disable('etag');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('trust proxy', true);
-
-/*app.get('/', function(req, res){
-    res.status(200).send('Hello from Customer Profile app')
-});
-
-var server = app.listen(process.env.PORT || '8080', function(){
-    console.log('App Listening on port %s', server.address().port);
-});*/
 
 
 // Customers
@@ -45,7 +36,7 @@ app.use((err, req, res) => {
 
 if (module === require.main) {
   // Start the server
-  const server = app.listen(config.get('PORT'), () => {
+  const server = app.listen(8080, () => {
     const port = server.address().port;
     console.log(`App listening on port ${port}`);
   });

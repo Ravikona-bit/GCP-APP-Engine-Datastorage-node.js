@@ -13,22 +13,6 @@ function fromDatastore(obj) {
   return obj;
 }
 
-/*function toDatastore(obj, nonIndexed) {
-  nonIndexed = nonIndexed || [];
-  const results = [];
-  Object.keys(obj).forEach(k => {
-    if (obj[k] === undefined) {
-      return;
-    }
-    results.push({
-      name: k,
-      value: obj[k],
-      excludeFromIndexes: nonIndexed.indexOf(k) !== -1,
-    });
-  });
-  return results;
-}*/
-
 // Lists all customers in the Datastore sorted alphabetically by name.
 // The ``limit`` argument determines the maximum amount of results to
 // return per page. The ``token`` argument allows requesting additional

@@ -9,8 +9,7 @@ Prerequsites :- Google cloud account with Fair knowledge on same, GCP SDK and no
 3. Run "npm start" to test in your local machine. Make sure "GOOGLE_APPLICATION_CREDENTIALS" variable is configured in your machine after GCP SDK configured in your local machine. GOOGLE_APPLICATION_CREDENTIALS variable value is your .json file path which contains your GCP service account details
 4. Execute "gcloud app deploy" to deploy into cloud
 5. Execute "gcloud app browse" to browse deployed application from UI.
-6. To verify from UI - <CLOUD_HOST_NAME>/customers to retrieve list of customers and <CLOUD_HOST_NAME>/customers/ to retrieve specific customer details. Soon will update code with add, edit/update and delete features.
-7. To verify from Postman or soap ui for JSON resonse use api's <CLOUD_HOST_NAME>/api/customers and <CLOUD_HOST_NAME>/api/customers/
+6. To verify from Postman or soap ui for JSON resonse use api's <CLOUD_HOST_NAME>/api/customers and <CLOUD_HOST_NAME>/api/customers/
 
 Screen shots:
 

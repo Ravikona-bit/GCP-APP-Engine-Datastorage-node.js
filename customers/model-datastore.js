@@ -1,4 +1,3 @@
-
 'use strict';
 
 const {Datastore} = require('@google-cloud/datastore');
@@ -9,10 +8,11 @@ const kind = 'Customers';
 // [END config]
 
 function fromDatastore(obj) {
-  obj.id = obj[Datastore.KEY].id;
+  if(typeof obj != 'undefined'){
+    obj.id = obj[Datastore.KEY].id;
+  }
   return obj;
 }
-
 // Lists all customers in the Datastore sorted alphabetically by name.
 // The ``limit`` argument determines the maximum amount of results to
 // return per page. The ``token`` argument allows requesting additional
@@ -38,25 +38,13 @@ function list(limit, token, cb) {
   });
 }
 // [END list]
-
 //Returns specific customer details for given customer ID
 function read(id, cb) {
   const key = ds.key([kind, parseInt(id, 10)]);
   ds.get(key, (err, entity) => {
-    if (!err && !entity) {
-      err = {
-        code: 404,
-        message: 'Not found',
-      };
-    }
-    if (err) {
-      cb(err);
-      return;
-    }
     cb(null, fromDatastore(entity));
   });
 }
-
 // [START exports]
 module.exports = {
   read,

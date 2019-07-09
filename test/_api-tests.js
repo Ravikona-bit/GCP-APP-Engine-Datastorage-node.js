@@ -17,9 +17,9 @@ module.exports = () => {
         .get(`/api/customers`)
         .expect(200)
         .expect(response => {
-          t.true(Array.isArray(response.body.items));
-          t.true(response.body.items.length >= 1);
-          id = response.body.items[0].id;
+          t.true(Array.isArray(response.body.customers));
+          t.true(response.body.customers.length >= 1);
+          id = response.body.customers[0].id;
         })
         .end(t.end);
     }, 1000);
